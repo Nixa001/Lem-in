@@ -12,7 +12,7 @@ func ValidPaths(paths models.Paths) models.Paths {
 		ValidPaths = append(ValidPaths, path)
 		result = append(result, ValidPaths)
 		for j := i + 1; j < len(paths.AllPaths); j++ {
-			if !hasInterception(ValidPaths, paths.AllPaths[j]) {
+			if !checkIntercept(ValidPaths, paths.AllPaths[j]) {
 				ValidPaths = append(ValidPaths, paths.AllPaths[j])
 				result = append(result, ValidPaths)
 			}
@@ -21,7 +21,7 @@ func ValidPaths(paths models.Paths) models.Paths {
 	return models.Paths{ValidPaths: result}
 }
 
-func hasInterception(ValidPaths [][]string, path []string) bool {
+func checkIntercept(ValidPaths [][]string, path []string) bool {
 	for _, paths := range ValidPaths {
 		for _, room1 := range paths[:len(paths)-1] {
 			for _, room2 := range path[:len(path)-1] {

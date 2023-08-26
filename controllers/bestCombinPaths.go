@@ -9,7 +9,7 @@ func BestCombPaths(ants models.Ants, pathGroups models.Paths) models.Paths {
 	minLevel := math.MaxInt32
 	var bestCombination [][]string
 
-	for _, combination := range pathGroups.SortedCombinations {
+	for _, combination := range pathGroups.SortComb {
 		spaceInPath := 0
 		totalPathLength := 0
 		levelOfAnts := 0
@@ -26,7 +26,7 @@ func BestCombPaths(ants models.Ants, pathGroups models.Paths) models.Paths {
 		}
 	}
 
-	return models.Paths{BestCombination: bestCombination}
+	return models.Paths{BestComb: bestCombination}
 }
 
 func SortCombPaths(combinations models.Paths) models.Paths {
@@ -43,7 +43,7 @@ func SortCombPaths(combinations models.Paths) models.Paths {
 			pathGroups[category] = combination
 		}
 	}
-	return models.Paths{SortedCombinations: pathGroups}
+	return models.Paths{SortComb: pathGroups}
 }
 
 func combLength(combination [][]string) int {

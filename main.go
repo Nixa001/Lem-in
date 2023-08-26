@@ -5,7 +5,6 @@ import (
 	"lem-in/controllers"
 	"lem-in/readfile"
 	"os"
-	"time"
 )
 
 func main() {
@@ -19,9 +18,6 @@ func main() {
 	data := readfile.ReadFile(filePath)
 	graph, ants := readfile.ParseData(data)
 
-	// runtime.GOMAXPROCS(runtime.NumCPU() - 1)
-	start := time.Now()
-
 	paths := controllers.FindPaths(graph)
 	ValidPaths := controllers.ValidPaths(paths)
 	sortedCombPaths := controllers.SortCombPaths(ValidPaths)
@@ -34,7 +30,5 @@ func main() {
 		turns++
 	}
 	fmt.Println()
-
-	fmt.Printf("Found %v paths in %v.\n", len(paths.AllPaths), time.Since(start))
-	fmt.Printf("Used quickest path possible with %v turns.\n", turns)
+	fmt.Printf("Turns number: %v\n", turns)
 }

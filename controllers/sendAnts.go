@@ -33,14 +33,14 @@ func determineOrder(queue [][]string) []int {
 }
 
 func assignAnts(ants models.Ants, bestCombination models.Paths) [][]string {
-	queue := make([][]string, len(bestCombination.BestCombination))
+	queue := make([][]string, len(bestCombination.BestComb))
 
 	for i := 1; i <= ants.NbrAnts; i++ {
 		ant := strconv.Itoa(i)
-		minSteps := len(bestCombination.BestCombination[0]) + len(queue[0])
+		minSteps := len(bestCombination.BestComb[0]) + len(queue[0])
 		minIndex := 0
 
-		for j, path := range bestCombination.BestCombination {
+		for j, path := range bestCombination.BestComb {
 			steps := len(path) + len(queue[j])
 			if steps < minSteps {
 				minSteps = steps
@@ -64,7 +64,7 @@ func calculateSteps(queue [][]string, bestCombination models.Paths) []string {
 	for i, path := range queue {
 		for _, ant := range path {
 			adder := []string{}
-			for _, vertex := range bestCombination.BestCombination[i] {
+			for _, vertex := range bestCombination.BestComb[i] {
 				str := "L" + ant + "-" + vertex
 				adder = append(adder, str)
 			}

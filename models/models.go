@@ -14,6 +14,6 @@ type Ants struct {
 type Paths struct {
 	AllPaths           [][]string
 	ValidPaths         [][][]string
-	SortedCombinations map[int][][]string
-	BestCombination    [][]string
+	SortComb map[int][][]string
+	BestComb    [][]string
 }
